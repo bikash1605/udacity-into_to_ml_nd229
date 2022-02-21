@@ -14864,21 +14864,21 @@ It is a ratio of true positives(words classified as spam, and which are actually
 </li>
 </ul>
 <h2 id="3.-Support-Vector-Machines:">3. <em>Support Vector Machines:</em><a class="anchor-link" href="#3.-Support-Vector-Machines:">&#182;</a></h2><ul>
-<li><strong>Application</strong> : Image classification.</li>
+<li><strong>Application</strong> : image analysis tasks, such as image classification and handwritten digit recognition.</li>
 <li><strong>Strength</strong> : <ul>
-<li>Powerful kernels</li>
-<li>Maximum margin classifiers, effective in high dimensional spaces</li>
-<li>Have higher accuracy than some of traditional classifiers and not easily influenced by overfitting.</li>
+<li>Provides powerful kernel to train our dataset</li>
+<li>Known to perform better when no. od features is high(high dimensional datasets)</li>
+<li>SVM has L2 Regularization feature. So, it has good generalization capabilities which prevent it from over-fitting.</li>
 </ul>
 </li>
 <li><strong>Weakness</strong> :<ul>
-<li>Less effective on noisier-larger datasets with overlapping classes.</li>
-<li>The training time is much longer because it is computationally intensive.</li>
-<li>Doesn’t directly provide probability estimates.</li>
+<li>SVM on large data set comparatively takes more time to train</li>
+<li>Computationally expensive and takes high time</li>
+<li>Chosing the kernel is not an easy task.</li>
 </ul>
 </li>
 <li><strong>Candidacy</strong> :<ul>
-<li>SVMs were chosen because of their effectiveness given high dimensionality. Due to our one-hot encoding feature transformation, i.e. after incorporating dummy variables, we got more than 100 features in our dataset, so SVMs should be a classifier that works regardless of that. Also, our dataset is not that large(&lt;100k records) to be a deterrent.</li>
+<li>As our dataset contains large number of features and SVM is known to perform well in such situation. Since the dataset for this project is not very large, we can try out SVM models. </li>
 </ul>
 </li>
 </ul>
@@ -15136,25 +15136,13 @@ Look at the graph at the bottom left from the cell above(the visualization creat
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><strong>Answer: </strong> 
-To understand gradient boosting we must first understand two important aspects of it: 1.Descison Trees 2.Boosting</p>
-<ol>
-<li><strong>Descion Trees:</strong> <ul>
-<li>This is basically defined as a decision support tool that uses tree like structure/model of decisions and their possible consequences. Here each node of the tree is a "test"(question),each branch is outcome of this test and each leaf represents a class label which we are trying to predict.</li>
-<li>So,by answering certain set questions one by one realting to the system we end up with potentially correct or incorrect answers,The strategy here is that the first set of questions have to be broad in order to eliminate multiple outcomes and the last few questions have to be very specific to get the correct outcomes.</li>
-<li>Finally,we end you with a big tree which has all the possible outcomes of all decisons and can be used to predict furture outcomes.</li>
-</ul>
+<p><strong>Answer: </strong></p>
+<ul>
+<li><p>Adaboost uses a group of weak learners (DescisionTree Claassifier by default), where each decision tree  learns from the data that has been poorly classified by other decision trees. This makes the overall classification more accurate.</p>
 </li>
-</ol>
-<ol>
-<li><strong>Boosting:</strong> <ul>
-<li>This is best explained by an example of a factory worker,who is working in an assembly line and is trained to perform a specific task ,he/she performs well on in their local and very specific tasks but overall they can't do much and are quite weak for other tasks,but if we combine multiple workers each having different expertise/skills and make them work on their individual tasks,we end up making the final product efficiently.</li>
-<li>This is the basic idea behind boosting,here we bundle up multiple classifers and make a final model which works accurately in predicitng accross all areas of the dataset in question.</li>
-</ul>
+<li><p>Each weak classifier is trained using a random subset of overall training set.After training a classifier at any level, ada-boost assigns weight to each training item. Misclassified item is assigned higher weight so that it appears in the training subset of next classifier with higher probability.After each classifier is trained, the weight is assigned to the classifier as well based on accuracy. More accurate classifier is assigned higher weight so that it will have more impact in final outcome.</p>
 </li>
-</ol>
-<p><em>AdaBoost is a boosting ensemble model and works especially well with the decision tree. Boosting model’s key is learning from the previous mistakes, e.g. misclassification data points, AdaBoost learns from the mistakes by increasing the weight of misclassified data points</em>
-       <em>. It works well with Decision tress and works in a sequential way , by learning the mistakes from previous steps.</em></p>
+</ul>
 
 </div>
 </div>
@@ -15324,10 +15312,15 @@ Final F-score on the testing data: 0.7401
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p><strong>Answer:</strong></p>
-<p>1 &amp; 2: education-num &amp; education. Better education would more often than not allow more opportunities in job positions with higher earnings. I think the education-num variable may be more useful, especially if there are some factors of the education variable that has low quantities.</p>
-<p>3: age. as people age they develop and have more opportunities for pay rises and job promotions.</p>
-<p>4: occupation. Some sectors will pay better than others based on the skills required and supply/demand for the role.</p>
-<p>5: workclass. Some workclasses should exempt people from earning &gt;50k e.g. “Never-worked”</p>
+<ol>
+<li><strong>education</strong> : Person having a better education tends to land at a decent job. It also reflects his mindset and his ways of working. Therefore it is more likely that he can excel in his job and get a good salary.</li>
+</ol>
+<p>2: <strong>age</strong>. As people become more exprienced with age, they tend to be doing well in with their pay structure.</p>
+<p>3: <strong>hours-per-week</strong> : The more the person spends time in the work environment, more is the responsiblity that the organisations has on that person. As a result, that person is critical to the business and likely to get an handsome salary.</p>
+<p>4: <strong>workclass</strong> :  Private organisations are believed to pay more as compared to govt. organisations.</p>
+<ol>
+<li><strong>occupation</strong> : The amount of money that a person makes is also linked to the type of his occupation. Generally businessman/entrepreneurs  are believed to make more money as compared to people working in other occupation.</li>
+</ol>
 
 </div>
 </div>
@@ -15405,8 +15398,13 @@ Final F-score on the testing data: 0.7401
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><strong>Answer:</strong>
-Features differ to expectations with capital-gain/loss &amp; marital-status (Married-civ-spouse) appearing in the top 5. For capital-gain &amp; capital-loss, I didn’t select these as I haven’t come across the terminology before. After reading up on them, it makes sense that they have an impact on income. If a person makes a lot of money via selling assets, then they will have earned more income. And similar logic with capital-loss. For marital status, I am still a bit unsure why marriage would have a big impact on an individuals income, unless its confounded with age. If the income is pooled in the data, then this would make sense.</p>
+<p><strong>Answer:</strong></p>
+<ul>
+<li><p>features like hours_per_week and age aligns to what i had guessed earlier. Hoowever looking at the vizualization above, it makes more sense to include other features too like capital loss, capital gain and education-num.</p>
+</li>
+<li><p>capital-gain/capital-loss direclty reflects a persons waelth. The wealthier a person is, more is his investments. As a result , his risk apetitite is more . Therefore it is likely that he can make more capital by doing investments and also likely that he can suffer losses which can increase the capital loss. overall it refelcts that he can donate more to charity and also use his charity donations for tax exemptions.</p>
+</li>
+</ul>
 
 </div>
 </div>
@@ -15491,10 +15489,10 @@ F-score on testing data: 0.7017
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p><strong>Answer:</strong></p>
 <ul>
-<li><p>Reducing the data to only five features also reduces the F-score and accuracy of the predictions. The accuracy of the model reduced from 0.8652 to 0.8417 whereas the F -score reduced from 0.7401 to 0.7017. As there has been a decrese in the F-score, it imples that the precision of the model has increased at the expense of a decrease in accuracy. With reduced set of features, all the complexities are not added up to make the model more accurate.</p>
-</li>
-<li><p>If training time is a facote, using reduced data for training the dataset does make sense. However, we cannot predict all the important features that rightly contribute to the accuracy and F-score. As a result , the number of iterations involving features will also increase.</p>
-</li>
+<li>Reducing the data to only five features also reduces the F-score and accuracy of the predictions. The accuracy of the model reduced from 0.8652 to 0.8417 whereas the F -score reduced from 0.7401 to 0.7017. As there has been a decrese in the F-score, it imples that the precision of the model has increased at the expense of a decrease in accuracy. With reduced set of features, all the complexities do not get not added up to make the model more accurate.</li>
+</ul>
+<ul>
+<li>If training time is a factor, using reduced data for training the dataset does make sense. However, we cannot predict all the important features that rightly contribute to the accuracy and F-score. As a result , the number of iterations involving features will also increase.</li>
 </ul>
 
 </div>
@@ -15506,6 +15504,20 @@ F-score on testing data: 0.7017
 </blockquote>
 
 </div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
 </div>
 </body>
 
